@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage("Checkout code") {
             steps {
-                checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/omkarsuperb/k8s.git']]])
+                checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/omkarsuperb/k8s.git']]])
             }
         }
         stage("Build image") {
