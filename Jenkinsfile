@@ -33,7 +33,7 @@ pipeline {
         }
 	stage('Creating Artifact'){
             steps{
-                archiveArtifacts artifacts: '**', followSymlinks: false
+                archiveArtifacts artifacts: 'manifest/deployment.yaml', followSymlinks: false
                  }
         }
         stage('Deploy to GKE') {
