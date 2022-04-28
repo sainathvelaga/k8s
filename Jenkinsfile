@@ -3,7 +3,7 @@ pipeline {
     environment {
         PROJECT_ID = 'kubernetes-project-340710'
         CLUSTER_NAME = 'gke-cluster'
-        LOCATION = 'asia-south1-a'
+        LOCATION = 'asia-south1'
         CREDENTIALS_ID = 'jenkins-gke'
     }
     stages {
