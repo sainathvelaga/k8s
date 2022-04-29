@@ -9,6 +9,7 @@ const PORT = process.env.PORT || 3000;
 const app = express();
 app.get('/', function (req, res) {
   res.send('Hello from jenkins\n');
+  document.body.style.backgroundColor = "Pink";
 });
 
 app.listen(PORT);
