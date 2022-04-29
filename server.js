@@ -11,7 +11,6 @@ app.get('/', function (req, res) {
   res.send('Hello from Jenkins\n');
 });
 
-document.body.style.backgroundColor = "aqua";
 
 app.listen(PORT);
 console.log('Running on http://localhost:' + PORT);
