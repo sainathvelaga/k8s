@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: gcr.io/kubernetes-project-340710/new:latest
+        image: docker.io/nginx:stable-alpine3.21-perl
         ports:
         - containerPort: 5000
 ---
