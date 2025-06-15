@@ -45,16 +45,16 @@ pipeline {
                  }
         }
         stage('Deploy to EKS') {
-            steps{
-                withCredentials([
-                string(credentialsId: 'aws-access-key-id', variable: 'AWS_ACCESS_KEY_ID'),
-                string(credentialsId: 'aws-secret-access-key', variable: 'AWS_SECRET_ACCESS_KEY')
-        ])
-                sh "sed -i 's/latest/${env.BUILD_ID}/g' manifest/deployment.yaml"
-                step([ projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: 'manifest/deployment.yaml', credentialsId: env.CREDENTIALS_ID, verifyDeployments: true])
-            }
-	    }
 
+                script {
+                    dir('kubernetes') {
+                        // # Update packages inside the cluster
+                        // sh "aws eks update-kubeconfig --name eks-cluster"
+                        # Deploy an application
+                        sh "kubectl apply -f manifest/deployment.yaml"
+                        # Deploy a service
+                        sh "kubectl apply -f ingress.yaml"
+                    }
 
     }
 }
