@@ -46,8 +46,12 @@ pipeline {
         }
         stage('Deploy to EKS') {
             steps{
+                withCredentials([
+            string(credentialsId: 'aws-access-key-id', variable: 'AWS_ACCESS_KEY_ID'),
+            string(credentialsId: 'aws-secret-access-key', variable: 'AWS_SECRET_ACCESS_KEY')
+        ])
                 sh "sed -i 's/latest/${env.BUILD_ID}/g' manifest/deployment.yaml"
-                step([$class: 'AmazonWebServicesCredentialsBinding', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: 'manifest/deployment.yaml', credentialsId: env.CREDENTIALS_ID, verifyDeployments: true])
+                step([ projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: 'manifest/deployment.yaml', credentialsId: env.CREDENTIALS_ID, verifyDeployments: true])
             }
 	    }
 
