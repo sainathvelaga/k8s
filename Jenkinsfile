@@ -53,9 +53,9 @@ pipeline {
                         // # Update packages inside the cluster
                         // sh "aws eks update-kubeconfig --name eks-cluster"
                         //Deploy an application
-                        sh "kubectl apply -f manifest/deployment.yaml"
+                        sh "kubectl apply -f k8s/manifest/deployment.yaml"
                         //Deploy a service
-                        sh "kubectl apply -f ingress.yaml"
+                        sh "kubectl apply -f k8s/manifest/ingress.yaml"
                     }
                 }
             }
