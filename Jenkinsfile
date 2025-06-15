@@ -51,7 +51,7 @@ pipeline {
                 script {
                     dir('manifest') {
                         // # Update packages inside the cluster
-                        // sh "aws eks update-kubeconfig --name eks-cluster"
+                        sh "aws eks update-kubeconfig --name ${CLUSTER_NAME} --region ${LOCATION} "
                         //Deploy an application
                         sh "kubectl apply -f deployment.yaml --validate=false"
                         //Deploy a service
