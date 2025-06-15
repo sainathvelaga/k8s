@@ -47,6 +47,7 @@ pipeline {
 
     stage('Deploy to EKS') {
 
+            steps {
                 script {
                     dir('kubernetes') {
                         // # Update packages inside the cluster
