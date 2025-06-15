@@ -44,7 +44,8 @@ pipeline {
                 archiveArtifacts artifacts: 'manifest/deployment.yaml', followSymlinks: false
                  }
         }
-        stage('Deploy to EKS') {
+
+    stage('Deploy to EKS') {
 
                 script {
                     dir('kubernetes') {
@@ -55,6 +56,7 @@ pipeline {
                         //Deploy a service
                         sh "kubectl apply -f ingress.yaml"
                     }
-
+                }
+    }
     }
 }
