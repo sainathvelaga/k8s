@@ -49,7 +49,7 @@ pipeline {
 
             steps {
                 script {
-                    dir('kubernetes') {
+                    dir('manifest') {
                         // # Update packages inside the cluster
                         // sh "aws eks update-kubeconfig --name eks-cluster"
                         //Deploy an application
